@@ -8,6 +8,10 @@ require 'json'
 require 'schnitzelstyle'
 
 class PublicBox < Sinatra::Application
+  before do
+    cache_control :public, :must_revalidate, :max_age => 60
+  end
+
   get '/' do
     haml :home
   end
