@@ -1,16 +1,29 @@
 require 'rubygems'
 require 'bundler/setup'
-require 'sinatra'
 
-# https://www.dropbox.com/s/timd27onyt5t5b6#view:list
-# http://localhost:9393/path/s/timd27onyt5t5b6
+require 'open-uri'
+require 'sinatra'
+require 'nokogiri'
+require 'json'
+
 class PublicBox < Sinatra::Application
   get '/' do
     haml :home
   end
 
   get '/box/*' do |path|
-    "Fetching #{path}"
+    doc = Nokogiri::HTML(open("https://www.dropbox.com/#{path}").read)
+    files = []
+    doc.css('#list-view div.filerow').each do |row|
+      files << {
+        filename: row.css('div.filename a').first.content.strip,
+        size: row.css('div.filesize span.hidden').first.content.to_i,
+        modified: row.css('div.modified span.hidden').first.content.to_i
+      }
+    end
+
+    content_type :json
+    files.to_json
   end
 end
 
