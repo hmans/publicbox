@@ -1,1 +1,28 @@
-home!
+%section
+  .container
+    %h2 The Problem
+    %p
+      You have a public Dropbox folder that you want to access programmatically
+      (for example, from a
+      %a{href: 'http://schreihals.info'} Schreihals
+      blog. Schreihals is awesome!)
+      But Dropbox only provides a HTML view of the contents. Hot damn!
+
+    %h2 The Solution
+    %p
+      PublicBox is a web service that parses the HTML provided by DropBox and returns a simple JSON document representing the contents of your public DropBox folder. Awesome!
+
+    %h2 Usage
+    %p
+      Simply replace the <code>https://www.dropbox.com/</code> part of your public Dropbox folder's URL with <code>https://publicbox.heroku.com/</code>. For example, if your public dropbox folder has the following URL:
+
+    <pre><code>https://www.dropbox.com/s/timd27onyt5t5b6</code></pre>
+
+    %p
+      then the following URL will give you an index of the folder's contents as JSON:
+
+      <pre><code>https://publicbox.heroku.com/s/timd27onyt5t5b6</code></pre>
+
+    %p
+      And that's about it, really. Enjoy!
+

@@ -7,6 +7,10 @@ GEM
     rack (1.3.5)
     rack-protection (1.1.4)
       rack
+    redcarpet (2.0.1)
+    sass (3.1.12)
+    schnitzelstyle (0.0.1)
+      sass
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.3.1)
@@ -22,5 +26,7 @@ DEPENDENCIES
   haml
   json
   nokogiri
+  redcarpet
+  schnitzelstyle
   shotgun
   sinatra

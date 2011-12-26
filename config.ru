@@ -5,13 +5,18 @@ require 'open-uri'
 require 'sinatra'
 require 'nokogiri'
 require 'json'
+require 'schnitzelstyle'
 
 class PublicBox < Sinatra::Application
   get '/' do
     haml :home
   end
 
-  get '/box/*' do |path|
+  get '/publicbox.css' do
+    scss :publicbox
+  end
+
+  get '/*' do |path|
     doc = Nokogiri::HTML(open("https://www.dropbox.com/#{path}").read)
     files = []
     doc.css('#list-view div.filerow').each do |row|

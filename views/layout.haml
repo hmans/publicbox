@@ -1,0 +1,16 @@
+!!! 5
+%html
+  %head
+    %title= [@page_title, 'publicbox'].compact.join(" | ")
+    %link{href: '/publicbox.css', media: "screen", rel: "stylesheet", type: "text/css"}
+  %body
+    %header
+      .container
+        %h1
+          PublicBox
+
+    = yield
+
+    %footer
+      .container
+        footer
