@@ -31,7 +31,7 @@ class PublicBox < Sinatra::Application
         filename: row.css('div.filename a').first.content.strip,
         size: row.css('div.filesize span.hidden').first.content.to_i,
         modified: row.css('div.modified span.hidden').first.content.to_i,
-        url: row.css('div.filename a').first['href']
+        url: row.css('div.filename a').first['href'].gsub(/\/\/www\./, "//dl.") + "?dl=1"
       }
     end
 
