@@ -6,6 +6,9 @@ require 'sinatra'
 require 'nokogiri'
 require 'json'
 require 'schnitzelstyle'
+require 'rack-cache'
+
+use Rack::Cache
 
 class PublicBox < Sinatra::Application
   before do
